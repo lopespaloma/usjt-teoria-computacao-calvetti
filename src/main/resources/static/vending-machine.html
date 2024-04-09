@@ -7,22 +7,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <h2>Bem-vindo à Vending Machine!</h2>
-    <p>Por favor, insira uma nota:</p>
-    <button id="nota" onclick="receberNota(1)">R$ 1,00</button>
-    <button id="nota" onclick="receberNota(2)">R$ 2,00</button>
-    <button id="nota" onclick="receberNota(5)">R$ 5,00</button>
-    <p id="totalRecebido">Total recebido: R$0,00</p>
-    <div id="doceSection" style="display: none;">
-        <p>Por favor, escolha o doce desejado:</p>
-        <button id="doceA" onclick="escolherDoce('A')">Doce A - R$6,00</button>
-        <button id="doceB" onclick="escolherDoce('B')">Doce B - R$7,00</button>
-        <button id="doceC" onclick="escolherDoce('C')">Doce C - R$8,00</button>
-    </div>
-    <div id="trocoSection" style="display: none;">
-        <p class="result" id="resultado"></p>
-        <button onclick="voltarTelaInicial()">Voltar à tela inicial</button>
+<h2>Bem-vindo à Vending Machine!</h2>
+<div class="container-externo">
+    <div class="container">
+        <div class="imagem">
+            <img src="/images/snack-machine.jpg">
+        </div>
+        <div class="conteudo">
+            <button id="totalRecebido" disabled>R$0,00</button>
+            <p class="texto">Por favor, insira uma nota:</p>
+            <button class="nota" onclick="receberNota(1)">R$ 1,00</button>
+            <button class="nota" onclick="receberNota(2)">R$ 2,00</button>
+            <button class="nota" onclick="receberNota(5)">R$ 5,00</button>
+
+            <div id="doceSection" style="display: block;">
+                <p class="texto">Escolha o doce desejado:</p>
+                <button id="doceA" class="doce-btn" onclick="escolherDoce('A')">Doce A R$6,00</button>
+                <button id="doceB" class="doce-btn" onclick="escolherDoce('B')">Doce B R$7,00</button>
+                <button id="doceC" class="doce-btn" onclick="escolherDoce('C')">Doce C R$8,00</button>
+            </div>
+
+            <div id="trocoSection" style="display: block">
+                <p class="result" id="resultado"></p>
+                <button id="voltarInicio" onclick="voltarTelaInicial()">Voltar ao início</button>
+            </div>
+        </div>
     </div>
 </div>
 

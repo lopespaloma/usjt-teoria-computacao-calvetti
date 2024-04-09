@@ -1,49 +1,150 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    text-align: center;
+    font-family: "Fira Code", monospace;
+    color: #F2F2F2;
+    background-color: #262626;
 }
-.container {
-    max-width: 400px;
+
+.container-externo {
+    width: 60%;
     margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #FFFFFF;
 }
-button {
+
+/* Define regras de estilo específicas para telas menores */
+@media screen and (max-width: 600px) {
+    .container-externo {
+        max-width: 100%;
+        border-radius: 0;
+    }
+}
+
+.container {
+    padding-top: 1%;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 5px;
+}
+
+.imagem {
+    display: flex;
+    justify-content: center;
+}
+
+.imagem img {
+    border: 3px solid #0D0D0D;
+    border-radius: 10px;
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    filter: brightness(200%);
+    filter: grayscale(60%);
+}
+
+.conteudo {
+    width: 95%;
+    padding: 0 5% 0 5% ;
+    display: flex;
+    flex-direction: column;
+}
+
+.conteudo p,
+.conteudo button {
+    color: #252526;
+    margin-bottom: 10px;
+}
+
+.texto {
+    font-size: 18px;
+}
+
+#totalRecebido {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 18px;
     margin-top: 10px;
-    font-size: 16px;
+    font-size: 22px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #1E2229;
+    font-family: "Fira Code", monospace;
+    text-transform: uppercase;
+}
+
+#totalRecebido:hover {
+    background-color: #0D0D0D;
+}
+
+.nota {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    margin-top: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    background-color: #0D0D0D;
+    font-family: "Fira Code", monospace;
+    text-transform: uppercase;
     cursor: pointer;
 }
-button:hover {
-    background-color: #45a049;
+
+.nota {
+    font-size: 16x;
+    padding: 8px;
+    background-color: #014A06;
+    color: #fff !important;
 }
 
-#nota {
-    background-color: #20731D;
-    color: #fff;
-}
-#doceA {
-    background-color: #FA6381;
-    color: #fff;
+#doceSection, #trocoSection {
+    display: block !important;
 }
 
-#doceB {
-    background-color: #82DCFF;
-    color: #fff;
-}
-
+#doceA,
+#doceB,
 #doceC {
-    background-color: #FFC636;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 10px;
     color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    background-color: #595959;
 }
 
-.result {
-    margin-top: 20px;
-    font-size: 18px;
+#doceA.disabled,
+#doceB.disabled,
+#doceC.disabled {
+    background-color: #A6A6A6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.doce-btn {
+    background-color: #595959;
+    color: #fff;
+
+}
+
+#voltarInicio {
+    display: block;
+    width: 50%;
+    padding: 10px;
+    margin: 15px auto;
+    font-size: 15px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #0D0D0D;
+    font-family: "Fira Code", monospace;
+    cursor: pointer;
 }
