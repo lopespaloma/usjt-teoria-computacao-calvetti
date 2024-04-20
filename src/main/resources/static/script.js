@@ -40,15 +40,14 @@ function escolherDoce(doce) {
     const troco = totalRecebido - preco;
     if (troco >= 0) {
         totalRecebido = 0;
+        document.getElementById('totalRecebido').innerText = `R$0,00`
         document.getElementById('doceSection').style.display = 'none';
         document.getElementById('trocoSection').style.display = 'block';
         document.getElementById('resultado').innerText = `Retire seu doce! Troco: R$${troco.toFixed(2)}`;
-
         restaurarCoresPadrao();
 
-
         const botaoSelecionado = document.getElementById('doce' + doce);
-        botaoSelecionado.style.backgroundColor = '#BFA3FF'; // Cor do doce selecionado
+        botaoSelecionado.style.backgroundColor = '#BFA3FF';
     } else {
         alert('Você não tem dinheiro suficiente para comprar este doce.');
     }
