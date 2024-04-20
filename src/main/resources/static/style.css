@@ -13,7 +13,6 @@ body {
     background-color: #FFFFFF;
 }
 
-/* Define regras de estilo específicas para telas menores */
 @media screen and (max-width: 600px) {
     .container-externo {
         max-width: 100%;

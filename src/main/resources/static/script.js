@@ -5,9 +5,9 @@ function restaurarCoresPadrao() {
     const botaoB = document.getElementById('doceB');
     const botaoC = document.getElementById('doceC');
 
-    botaoA.style.backgroundColor = '#595959'; // Cor padrão
-    botaoB.style.backgroundColor = '#595959'; // Cor padrão
-    botaoC.style.backgroundColor = '#595959'; // Cor padrão
+    botaoA.style.backgroundColor = '#595959';
+    botaoB.style.backgroundColor = '#595959';
+    botaoC.style.backgroundColor = '#595959';
 }
 
 function voltarTelaInicial() {
@@ -21,7 +21,6 @@ function voltarTelaInicial() {
 
      restaurarCoresPadrao();
 }
-
 
 function escolherDoce(doce) {
     let preco = 0;
