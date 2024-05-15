@@ -5,9 +5,23 @@ body {
     background-color: #262626;
 }
 
+.menu-link {
+    font-family: Ubuntu;
+    font-size: 15px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-decoration: none;
+    color: #f2f2f2;
+}
+
+.menu-link:hover{
+    color: rgba(242, 242, 242, 0.57);
+}
+
 .container-externo {
-    width: 80%;
-    margin: 0 auto;
+    width: 70%;
+    margin: 15px auto;
     padding: 15px;
     border-radius: 15px;
     background-color: #FFFFFF;

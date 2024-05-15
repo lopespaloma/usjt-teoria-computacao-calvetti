@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.button {
+    display: block; /* Alterado para empilhar verticalmente */
+    width: 200px; /* Largura definida para centralizar */
+
+    padding: 15px 30px;
+    margin: 20px auto; /* Margens ajustadas para centralizar */
+    background-color: #ffffff; /* branco */
+    color: #333333; /* preto */
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none; /* Remover sublinhado dos links */
+}
+
+.button:hover {
+    background-color: rgba(0, 0, 0, 0.33); /* branco */
+    color: #f2f2f2; /* preto */
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none; /* Remover sublinhado dos links */
+}
+
+#btnLast {
+    opacity: 0.5; /* Reduz a opacidade para indicar desabilitado */
+    cursor: not-allowed;
+}

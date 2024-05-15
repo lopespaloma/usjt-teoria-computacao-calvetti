@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elevador com Andares</title>
+
+  <link rel="stylesheet" href="elevador.css">
+</head>
+<body>
+<a href="index.html" class="menu-link">Voltar ao menu</a> <!-- Link fora do container -->
+
+<div class="container">
+  <div class="display" id="display">Térreo | aberto</div>
+  <div class="elevador aberto" id="elevador">
+  <div class="porta esquerda" id="porta-esquerda"></div>
+  <div class="porta direita" id="porta-direita"></div>
+  </div>
+
+  <div class="andares">
+    <button class="andar" data-andar="0">Térreo</button>
+    <button class="andar" data-andar="1">1º</button>
+    <button class="andar" data-andar="2">2º</button>
+    <button class="andar" data-andar="3">3º</button>
+  </div>
+
+</div>
+
+<script src="elevador.js"></script>
+</body>
+</html>
