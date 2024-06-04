@@ -2,7 +2,7 @@ package br.projeto.analisadorlexico;
 import java.util.*;
 
 public class TabelaSimbolos {
-    private List<EntradaTabelaSimbolos> simbolos = new ArrayList<>();  // Mantem a ordem de inserção
+    private List<EntradaTabelaSimbolos> simbolos = new ArrayList<>();
 
     public void adicionar(String identificador, String tipo, String descricao) {
         simbolos.add(new EntradaTabelaSimbolos(identificador, tipo, descricao));
@@ -14,6 +14,42 @@ public class TabelaSimbolos {
         System.out.println("----------------------------------------------------------------------");
         for (EntradaTabelaSimbolos entrada : simbolos) {
             System.out.printf("%-20s %-20s %-40s%n", entrada.getIdentificador(), entrada.getTipo(), entrada.getDescricao());
+        }
+    }
+
+    public void imprimirAgrupada() {
+        Map<String, List<EntradaTabelaSimbolos>> agrupados = new LinkedHashMap<>();
+        agrupados.put("Palavras Reservadas", new ArrayList<>());
+        agrupados.put("Operadores", new ArrayList<>());
+        agrupados.put("Pontuação", new ArrayList<>());
+        agrupados.put("Parênteses", new ArrayList<>());
+        agrupados.put("Atribuição", new ArrayList<>());
+        agrupados.put("Identificadores", new ArrayList<>());
+        agrupados.put("Numerais", new ArrayList<>());
+
+        for (EntradaTabelaSimbolos entrada : simbolos) {
+            if (entrada.getTipo().equals("Palavra Reservada")) {
+                agrupados.get("Palavras Reservadas").add(entrada);
+            } else if (entrada.getTipo().equals("Operador")) {
+                agrupados.get("Operadores").add(entrada);
+            } else if (entrada.getTipo().equals("Pontuação")) {
+                agrupados.get("Pontuação").add(entrada);
+            } else if (entrada.getTipo().equals("Parêntese")) {
+                agrupados.get("Parênteses").add(entrada);
+            } else if (entrada.getTipo().equals("Atribuição")) {
+                agrupados.get("Atribuição").add(entrada);
+            } else if (entrada.getTipo().equals("Identificador")) {
+                agrupados.get("Identificadores").add(entrada);
+            } else if (entrada.getTipo().equals("Numeral")) {
+                agrupados.get("Numerais").add(entrada);
+            }
+        }
+
+        for (Map.Entry<String, List<EntradaTabelaSimbolos>> grupo : agrupados.entrySet()) {
+            System.out.println("\n" + grupo.getKey() + ":");
+            for (EntradaTabelaSimbolos entrada : grupo.getValue()) {
+                System.out.printf("%-20s %-20s %-40s%n", entrada.getIdentificador(), entrada.getTipo(), entrada.getDescricao());
+            }
         }
     }
 }
