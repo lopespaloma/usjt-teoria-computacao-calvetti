@@ -6,13 +6,13 @@ let elevadorPosicao = 0;
 function fecharPortas() {
   elevador.classList.remove('aberto');
   elevador.classList.add('fechado');
-  atualizarDisplay(elevadorPosicao, false); // Passa false para indicar que as portas estão fechadas
+  atualizarDisplay(elevadorPosicao, false);
 }
 
 function abrirPortas() {
   elevador.classList.remove('fechado');
   elevador.classList.add('aberto');
-  atualizarDisplay(elevadorPosicao, true); // Passa true para indicar que as portas estão abertas
+  atualizarDisplay(elevadorPosicao, true);
 }
 
 function atualizarDisplay(andar, estadoPortas) {
@@ -43,7 +43,6 @@ function moverElevador(andarDestino) {
       atualizarBotaoSelecionado(andarDestino);
       return;
     }
-
     atualizarDisplay(elevadorPosicao);
     atualizarBotaoSelecionado(elevadorPosicao);
   }, 1000);
@@ -53,7 +52,6 @@ function selecionarAndar(event) {
   let andarSelecionado = parseInt(event.target.getAttribute('data-andar'));
   moverElevador(andarSelecionado);
 }
-
 andares.forEach(andar => {
   andar.addEventListener('click', selecionarAndar);
 });
