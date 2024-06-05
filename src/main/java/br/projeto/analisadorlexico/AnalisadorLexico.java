@@ -4,13 +4,50 @@ import java.util.regex.*;
 
 public class AnalisadorLexico {
     // Tipos de tokens
-    private static final String[] PALAVRAS_RESERVADAS = {"if", "else", "while", "switch", "int", "double"};
-    private static final String[] OPERADORES = {"+", "-", "*", "/", "<", ">", "<=", ">=", "!="};
-    private static final String[] SIMBOLOS = {",", ";", ":", "."};  // Inclui ; como símbolo
-    private static final String[] PARENTESES = {"(", ")", "[", "]", "{", "}"};
+    private static final Map<String, String> PALAVRAS_RESERVADAS = Map.of(
+            "if", "Palavra-chave reservada pela linguagem",
+            "else", "Palavra-chave reservada pela linguagem",
+            "while", "Palavra-chave reservada pela linguagem",
+            "switch", "Palavra-chave reservada pela linguagem",
+            "int", "Palavra-chave reservada pela linguagem",
+            "double", "Palavra-chave reservada pela linguagem"
+    );
+
+    private static final Map<String, String> OPERADORES = Map.of(
+            "+", "Adição",
+            "-", "Subtração",
+            "*", "Multiplicação",
+            "/", "Divisão",
+            "<", "Menor que",
+            ">", "Maior que",
+            "<=", "Menor ou igual a",
+            ">=", "Maior ou igual a",
+            "!=", "Diferente de"
+    );
+
+    private static final Map<String, String> SIMBOLOS = Map.of(
+            ",", "Vírgula",
+            ";", "Ponto e vírgula",
+            ":", "Dois pontos",
+            ".", "Ponto"
+    );
+
+    private static final Map<String, String> DELIMITADORES = Map.of(
+            "(", "Parêntese",
+            ")", "Parêntese",
+            "[", "Colchete",
+            "]", "Colchete",
+            "{", "Chave",
+            "}", "Chave"
+    );
+
     private static final String ATRIBUICAO = "=";
     private static final Pattern IDENTIFICADOR = Pattern.compile("[a-zA-Z_]\\w{0,29}");
     private static final Pattern NUMERAL = Pattern.compile("\\d{1,9}(\\.\\d*([eE][+-]?\\d{1,9})?)?");
+
+    // Sequências de escape ANSI para colorir a saída
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_RESET = "\u001B[0m";
 
     private TabelaSimbolos tabelaSimbolosInicial = new TabelaSimbolos();
     private TabelaSimbolos tabelaSimbolosDinamica = new TabelaSimbolos();
@@ -55,21 +92,21 @@ public class AnalisadorLexico {
 
         if (simbolosReconhecidos.contains(token)) return;
 
-        if (Arrays.asList(PALAVRAS_RESERVADAS).contains(token)) {
+        if (PALAVRAS_RESERVADAS.containsKey(token)) {
             System.out.println("Token: " + token + " | Tipo: Palavra Reservada");
-            tabelaSimbolosDinamica.adicionar(token, "Palavra Reservada", "Palavra-chave reservada pela linguagem");
+            tabelaSimbolosDinamica.adicionar(token, "Palavra Reservada", PALAVRAS_RESERVADAS.get(token));
             simbolosReconhecidos.add(token);
-        } else if (Arrays.asList(OPERADORES).contains(token)) {
+        } else if (OPERADORES.containsKey(token)) {
             System.out.println("Token: " + token + " | Tipo: Operador");
-            tabelaSimbolosDinamica.adicionar(token, "Operador", "Usado para operações aritméticas ou lógicas");
+            tabelaSimbolosDinamica.adicionar(token, "Operador", OPERADORES.get(token));
             simbolosReconhecidos.add(token);
-        } else if (Arrays.asList(SIMBOLOS).contains(token)) {
+        } else if (SIMBOLOS.containsKey(token)) {
             System.out.println("Token: " + token + " | Tipo: Pontuação");
-            tabelaSimbolosDinamica.adicionar(token, "Pontuação", "Símbolo de pontuação");
+            tabelaSimbolosDinamica.adicionar(token, "Pontuação", SIMBOLOS.get(token));
             simbolosReconhecidos.add(token);
-        } else if (Arrays.asList(PARENTESES).contains(token)) {
-            System.out.println("Token: " + token + " | Tipo: Parêntese");
-            tabelaSimbolosDinamica.adicionar(token, "Parêntese", "Usado para agrupar expressões");
+        } else if (DELIMITADORES.containsKey(token)) {
+            System.out.println("Token: " + token + " | Tipo: Delimitador");
+            tabelaSimbolosDinamica.adicionar(token, "Delimitador", DELIMITADORES.get(token));
             simbolosReconhecidos.add(token);
         } else if (token.equals(ATRIBUICAO)) {
             System.out.println("Token: " + token + " | Tipo: Atribuição");
@@ -84,7 +121,7 @@ public class AnalisadorLexico {
             tabelaSimbolosDinamica.adicionar(token, "Identificador", "Nome de variável ou função");
             simbolosReconhecidos.add(token);
         } else {
-            System.out.println("Erro: Token desconhecido: " + token);
+            System.out.println(ANSI_RED + "Erro: Token desconhecido: " + token + ANSI_RESET);
         }
     }
 
@@ -101,21 +138,20 @@ public class AnalisadorLexico {
     }
 
     private void inicializarTabelaSimbolos() {
-        for (String palavraReservada : PALAVRAS_RESERVADAS) {
-            tabelaSimbolosInicial.adicionar(palavraReservada, "Palavra Reservada", "Palavra-chave reservada pela linguagem");
+        for (Map.Entry<String, String> entrada : PALAVRAS_RESERVADAS.entrySet()) {
+            tabelaSimbolosInicial.adicionar(entrada.getKey(), "Palavra Reservada", entrada.getValue());
         }
-        for (String operador : OPERADORES) {
-            tabelaSimbolosInicial.adicionar(operador, "Operador", "Usado para operações aritméticas ou lógicas");
+        for (Map.Entry<String, String> entrada : OPERADORES.entrySet()) {
+            tabelaSimbolosInicial.adicionar(entrada.getKey(), "Operador", entrada.getValue());
         }
-        for (String simbolo : SIMBOLOS) {
-            tabelaSimbolosInicial.adicionar(simbolo, "Pontuação", "Símbolo de pontuação");
+        for (Map.Entry<String, String> entrada : SIMBOLOS.entrySet()) {
+            tabelaSimbolosInicial.adicionar(entrada.getKey(), "Pontuação", entrada.getValue());
         }
-        for (String parentese : PARENTESES) {
-            tabelaSimbolosInicial.adicionar(parentese, "Parêntese", "Usado para agrupar expressões");
+        for (Map.Entry<String, String> entrada : DELIMITADORES.entrySet()) {
+            tabelaSimbolosInicial.adicionar(entrada.getKey(), "Delimitador", entrada.getValue());
         }
         tabelaSimbolosInicial.adicionar(ATRIBUICAO, "Atribuição", "Usado para atribuir valor a uma variável");
 
-        // Adiciona exemplos de identificadores e números
         tabelaSimbolosInicial.adicionar("A-Z, a-z, _", "Identificador", "Letras maiúsculas, minúsculas ou sublinhado, usado como nome de variável ou função");
         tabelaSimbolosInicial.adicionar("1", "Numeral", "Número");
         tabelaSimbolosInicial.adicionar("1.0", "Numeral", "Número");
