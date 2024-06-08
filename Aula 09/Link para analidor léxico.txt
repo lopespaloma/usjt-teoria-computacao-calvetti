@@ -1,0 +1,4 @@
+***
+Projeto no github do integrante Gabriel para colaboração
+
+https://github.com/GabrielnSoares/AnalisadorLexico

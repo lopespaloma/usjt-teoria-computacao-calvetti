@@ -1,0 +1,6 @@
+***
+Projeto foi concebido no github da integrante Paloma para colaboração: 
+
+https://github.com/lopespaloma/app-vending-machine
+
+elevador e maquina de doces no mesmo projeto
